@@ -4,7 +4,8 @@ public class Arrays_Sortings {
     public static void main(String[] args) {
         int arr[]={2,3,4,1,18,-2,-33,-1,20};
         //bubbel sort
-         int  sorted_arr[]=bubble_sort(arr);
+//         int  sorted_arr[]=bubble_sort(arr);
+        int sorted_arr[]=selection_sort(arr);
         System.out.println(Arrays.toString(sorted_arr));
         //selection sort
 
@@ -28,4 +29,29 @@ public class Arrays_Sortings {
         return arr;
 
     }
+    public static int[] selection_sort(int arr[]) {
+        for (int i = 0; i < arr.length ; i++) {
+            int last= arr.length-i-1;
+            int index=getMaxIndex(arr,0,last);
+            // Swap if index is not already at the correct position
+            if (index != last) {
+                arr[index] = arr[index] ^ arr[last];
+                arr[last] = arr[index] ^ arr[last];
+                arr[index] = arr[index] ^ arr[last];
+            }
+
+        }
+        return arr;
+    }
+    public static int getMaxIndex(int arr[],int start,int end){
+        int max=start;
+        int index=0;
+        for (int i =start+ 1; i <=end ; i++) {
+            if(arr[i]>arr[max]){
+                index=i;
+            }
+        }
+        return index;
+    }
 }
+
