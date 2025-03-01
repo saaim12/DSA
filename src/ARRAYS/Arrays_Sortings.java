@@ -2,10 +2,11 @@ package ARRAYS;
 import java.util.*;
 public class Arrays_Sortings {
     public static void main(String[] args) {
-        int arr[]={2,3,4,1,18,-2,-33,-1,20};
+        int arr[]={4,5,1,2,3};
         //bubbel sort
 //         int  sorted_arr[]=bubble_sort(arr);
-        int sorted_arr[]=selection_sort(arr);
+//        int sorted_arr[]=selection_sort(arr);
+        int sorted_arr[]=insertion_sort2(arr);
         System.out.println(Arrays.toString(sorted_arr));
         //selection sort
 
@@ -39,8 +40,9 @@ public class Arrays_Sortings {
                 arr[last] = arr[index] ^ arr[last];
                 arr[index] = arr[index] ^ arr[last];
             }
-
+            System.out.println(Arrays.toString(arr));
         }
+
         return arr;
     }
     public static int getMaxIndex(int arr[],int start,int end){
@@ -52,6 +54,33 @@ public class Arrays_Sortings {
             }
         }
         return index;
+    }
+    public static int [] insertion_sort1(int [] arr){
+        for (int i = 0; i <arr.length-1 ; i++) {
+            for (int j = i+1; j > 0; j--) {
+                if(arr[j-1]>arr[j]){
+                    //this is XOR swapping technique which do not require an additional variable
+                    arr[j]=arr[j]^arr[j-1];
+                    arr[j-1]=arr[j]^arr[j-1];
+                    arr[j]=arr[j] ^ arr[j-1];
+                }
+            }
+            System.out.println(Arrays.toString(arr));
+
+        }
+        return arr;
+    }
+    public static int[] insertion_sort2(int [] arr){
+        for (int i = 1; i < arr.length ; i++) {
+          int current=arr[i];
+          int j=i-1;
+          while(j>=0 && arr[j]>current ){
+              arr[j+1]=arr[j];
+              j--;
+          }
+          arr[j+1]=current;
+        }
+        return arr;
     }
 }
 
