@@ -2,15 +2,14 @@ package ARRAYS;
 import java.util.*;
 public class Arrays_Sortings {
     public static void main(String[] args) {
-        int arr[]={4,5,1,2,3};
+       // int arr[]={4,5,1,2,3};
         //bubbel sort
 //         int  sorted_arr[]=bubble_sort(arr);
 //        int sorted_arr[]=selection_sort(arr);
-        int sorted_arr[]=insertion_sort2(arr);
+        //int sorted_arr[]=insertion_sort2(arr);
+        int[] arr = {5, 3, 4, 1, 2};
+        int sorted_arr[]=cyclicSort(arr);
         System.out.println(Arrays.toString(sorted_arr));
-        //selection sort
-
-        //insertion sort
 
     }
     public static int[] bubble_sort(int arr[]){
@@ -81,6 +80,24 @@ public class Arrays_Sortings {
           arr[j+1]=current;
         }
         return arr;
+    }
+    public static int[] cyclicSort(int arr[]) {
+        int i = 0;
+        while (i < arr.length) {
+            int correctIndex = arr[i] - 1; // Correct position for current value
+            if (arr[i] != arr[correctIndex]) {
+                swap(arr, i, correctIndex);
+            } else {
+                i++; // Move to the next index if already in the correct place
+            }
+        }
+        return  arr;
+    }
+
+    private static void swap(int[] arr, int first, int second) {
+        int temp = arr[first];
+        arr[first] = arr[second];
+        arr[second] = temp;
     }
 }
 
