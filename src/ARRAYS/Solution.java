@@ -57,3 +57,58 @@ class Solution {
 //    }
 
 }
+//
+
+//leetcode 287 medium solutions
+//but in case there is only one dublicate
+//we can use hashmap for more than one dublicate
+//
+// class Solution {
+//     public int findDuplicate(int[] nums) {
+//         for (int i = 0; i <nums.length ; i++) {
+//             for (int j = nums.length-1; j >=0 ; j--) {
+//                 if(i != j && nums[i]==nums[j]){
+//                     return nums[j];
+//                 }
+//             }
+//         }
+
+//     return nums[0];
+//     }
+
+// }
+// using frequency method
+
+//    public int findDuplicate(int[] nums) {
+//        int[] numbers_frequency = new int[nums.length]; // Initialize array with correct length
+//
+//        for (int i = 0; i < nums.length; i++) {
+//            int value = nums[i];
+//            numbers_frequency[value]++;
+//            if (numbers_frequency[value] > 1) {
+//                return value;
+//
+//            }
+//        }
+//
+//
+//        return -1;
+//    }
+
+
+
+//using bubble sort
+// public class Solution {
+//     public int findDuplicate(int[] nums) {
+//         Arrays.sort(nums); // Sort the array in ascending order
+
+//         for (int i = 1; i < nums.length; i++) {
+//             if (nums[i] == nums[i - 1]) {
+//                 return nums[i]; // Return the duplicate number found
+//             }
+//         }
+
+//         return nums.length; // Return the length of the array if no duplicate is found
+//     }
+// }
+
