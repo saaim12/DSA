@@ -22,7 +22,27 @@ public class Recursions {
         // System.out.println(isPalindrome(1121));
 
         // Count occurrences of a digit in a given number
-        System.out.println(count_num(11223311, 2, 0));
+        //System.out.println(count_num(11223311, 2, 0));
+
+        //check if the array is sorted
+        //isSorted(array,starting index)
+        int[] arr1 = {1, 2, 3, 4, 5};
+        int[] arr2 = {1, 3, 2, 4, 5};
+
+        System.out.println(isSorted(arr1, 0)); // true
+        System.out.println(isSorted(arr2, 0)); // false
+
+    }
+
+    private static boolean isSorted(int[] arr, int index) {
+        if(index==arr.length-1){
+            return  true;
+        }
+        if(arr[index]>arr[index+1]){
+            return false;
+        }
+        return isSorted(arr,index++);
+
     }
 
     /**
