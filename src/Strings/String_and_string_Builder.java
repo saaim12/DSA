@@ -1,5 +1,7 @@
 package Strings;
 
+import java.util.ArrayList;
+
 public class String_and_string_Builder {
     public static void main(String[] args) {
         // ********* CONCEPT 1: STRING COMPARISON *********
@@ -87,4 +89,5 @@ public class String_and_string_Builder {
         System.out.println("Final String Length: " + sb2.length());
         System.out.println("Time taken with StringBuilder: " + (endTime - startTime) + "ms");
     }
+
 }
