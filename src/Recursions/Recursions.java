@@ -149,4 +149,67 @@ public class Recursions {
         digit *= Math.pow(10, (int) (Math.log10(num)));
         return digit + reversed_num_2(num / 10);
     }
+    /**
+     * Recursively solving a problem rotated sorted array
+     * @param array  to check
+     * @return index of key
+    */
+    public static int binary_Search_simply(int arr[],int key){
+        int mid,start=0;
+        int end=arr.length-1;
+        while(start>=end){
+            mid=(end+start)/2;
+
+            if (arr[mid] == key) {
+                return mid; // key found
+            }
+            if (arr[start] <= arr[mid]) {
+                // Left part is sorted
+                if (key >= arr[start] && key < arr[mid]) {
+                    end = mid - 1;
+                } else {
+                    start = mid + 1;
+                }
+            } else {
+                // Right part is sorted
+                if (key > arr[mid] && key <= arr[end]) {
+                    start = mid + 1;
+                } else {
+                    end = mid - 1; // <-- this part is critical
+                }
+            }
+        }
+
+        return -1;
+    }
+
+    public static int binary_Search_recursively(int arr[], int key, int start, int end) {
+        if (start > end) {
+            return -1; // Base case: not found
+        }
+
+        int mid = (start + end) / 2;
+
+        if (arr[mid] == key) {
+            return mid;
+        }
+
+        // If left part is sorted
+        if (arr[start] <= arr[mid]) {
+            if (key >= arr[start] && key < arr[mid]) {
+                return binary_Search_recursively(arr, key, start, mid - 1);
+            } else {
+                return binary_Search_recursively(arr, key, mid + 1, end);
+            }
+        }
+        // Else right part must be sorted
+        else {
+            if (key > arr[mid] && key <= arr[end]) {
+                return binary_Search_recursively(arr, key, mid + 1, end);
+            } else {
+                return binary_Search_recursively(arr, key, start, mid - 1);
+            }
+        }
+    }
+
 }
