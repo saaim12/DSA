@@ -28,4 +28,12 @@ public class problems {
         }
         return subs;
     }
+//    public static ArrayList<String> substrings2(String str,char last,int start,ArrayList<String> subs){
+//        if(start == str.length()){
+//            return subs;
+//        }
+//        char to_be_added=str.charAt(start);
+//
+//
+//    }
 }
