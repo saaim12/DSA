@@ -17,43 +17,68 @@ public class LinkedList {
         head = insert(head, 1, 20);
         head = insert(head, 2, 30);
         head = insert(head, 1, 15);
-        head = InsertUsingallpossiblecases(head, 8, 44);
-        head = InsertUsingallpossiblecases(head, 2, 44);
-        // Print list before sorting
-        printList(head);
-        // Sort the list
-        //head = sorting(head);
-        head=reverse_iteratively(head);
+        head = insertSafely(head, 8, 44); // Invalid index test
+        head = insertSafely(head, 2, 44);
 
+        //System.out.println("Original List:");
+        //printList(head);
+
+        //head = reverseIteratively(head);
+        //System.out.println("Reversed List (Iterative):");
+       // printList(head);
+
+       // head = reverseRecursively(head);
+        //System.out.println("Reversed Again (Recursive):");
+        printList(head);
+
+       // head = sortList(head);
+        System.out.println("Sorted List:");
+
+        head= sortList_bubble(head);
         printList(head);
     }
-    public static Node reverse_recursively(Node head){
-        if (head == null || head.next == null) {
-            return head;
+    public static Node sortList_bubble(Node head){
+        if (head == null || head.next == null) return head;
+        boolean swapped;
+        Node current=head;
+        do{
+            swapped=false;
+            while(current!=null && current.next!=null){
+                if( current.next !=null && current.val>current.next.val){
+                    int temp=current.val;
+                    current.val=current.next.val;
+                    current.next.val=temp;
+                    swapped=true;
+                }
+                current =current.next;
+            }
+        }while (swapped);
+        return head;
+    }
+
+
+    // Reverse recursively
+    public static Node reverseRecursively(Node head) {
+        if (head == null || head.next == null) return head;
+        Node newHead = reverseRecursively(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
+    }
+
+    // Reverse iteratively
+    public static Node reverseIteratively(Node head) {
+        Node prev = null;
+        while (head != null) {
+            Node next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
         }
-        Node reverser=reverse_recursively(head.next);
-        head.next.next=head;
-        head.next=null;
-        head=head.next;
-        return reverser;
-
-    }
-    public static Node reverse_iteratively(Node head){
-        if(head==null || head.next==null) return head;
-        Node prev=null;
-        Node present=head;
-        Node next=present.next;
-
-        while(present!=null){
-            next = present.next;
-            present.next=prev;
-            prev=present;
-            present=next;
-
-                    }
         return prev;
     }
-    // Insert at a specific index
+
+    // Insert at specific index
     public static Node insert(Node head, int index, int value) {
         Node newNode = new Node(value);
         if (index == 0) {
@@ -62,33 +87,48 @@ public class LinkedList {
         }
 
         Node current = head;
-        int count = 0;
-        while (current != null && count < index - 1) {
+        for (int i = 0; current != null && i < index - 1; i++) {
             current = current.next;
-            count++;
         }
 
-        if (current != null) {
-            newNode.next = current.next;
-            current.next = newNode;
-        }
-
+        if (current == null) return head; // Invalid index
+        newNode.next = current.next;
+        current.next = newNode;
         return head;
     }
 
-    // Delete at a specific index
-    public static Node delete(Node head, int index) {
-        if (head == null) return null;
-
-        if (index == 0) {
-            return head.next;
+    // Safe insert with invalid index check
+    public static Node insertSafely(Node head, int index, int val) {
+        if (index == 0 || head == null) {
+            Node newNode = new Node(val);
+            newNode.next = head;
+            return newNode;
         }
 
+        Node temp = head;
+        for (int i = 0; temp != null && i < index - 1; i++) {
+            temp = temp.next;
+        }
+
+        if (temp == null) {
+            System.out.println("Invalid index: " + index);
+            return head;
+        }
+
+        Node newNode = new Node(val);
+        newNode.next = temp.next;
+        temp.next = newNode;
+        return head;
+    }
+
+    // Delete at specific index
+    public static Node delete(Node head, int index) {
+        if (head == null) return null;
+        if (index == 0) return head.next;
+
         Node current = head;
-        int count = 0;
-        while (current.next != null && count < index - 1) {
+        for (int i = 0; current.next != null && i < index - 1; i++) {
             current = current.next;
-            count++;
         }
 
         if (current.next != null) {
@@ -98,111 +138,56 @@ public class LinkedList {
         return head;
     }
 
-    // Traverse and print
+    // Print linked list
     public static void printList(Node head) {
-        Node temp = head;
-        while (temp != null) {
-            System.out.print(temp.val + " -> ");
-            temp = temp.next;
+        while (head != null) {
+            System.out.print(head.val + " -> ");
+            head = head.next;
         }
         System.out.println("null");
     }
 
-    // Insert using all possible cases (handles head, invalid index, etc.)
-    public static Node InsertUsingallpossiblecases(Node head, int index, int val) {
-        if (head == null && index == 0) {
-            // If the list is empty and index is 0, just insert at the head
-            return new Node(val);
-        }
-        if (index == 0) {
-            // Insert at head
-            Node newNode = new Node(val);
-            newNode.next = head;
-            return newNode;
-        }
+    // Sort using merge sort
+    public static Node sortList(Node head) {
+        if (head == null || head.next == null) return head;
 
-        Node temp = head;
-        int count = 0;
-        while (temp != null && count < index - 1) {
-            temp = temp.next;
-            count++;
-        }
+        Node mid = getMiddle(head);
+        Node right = mid.next;
+        mid.next = null;
 
-        if (temp == null) {
-            // Means index is out of bounds
-            System.out.println("Node index is invalid");
-            return head;
-        }
+        Node leftSorted = sortList(head);
+        Node rightSorted = sortList(right);
 
-        // Insert new node at the given index
-        Node newNode = new Node(val);
-        newNode.next = temp.next;
-        temp.next = newNode;
-        return head;
+        return merge(leftSorted, rightSorted);
     }
 
-    // Sorting linked list using merge sort
-    public static Node middle(Node head) {
-        if (head == null || head.next == null) {
-            return head; // If there's only one node or none, return the head.
-        }
-
-        Node slow = head;
-        Node fast = head;
+    // Find middle for merge sort
+    public static Node getMiddle(Node head) {
+        Node slow = head, fast = head.next;
         while (fast != null && fast.next != null) {
-            fast = fast.next.next;
             slow = slow.next;
+            fast = fast.next.next;
         }
         return slow;
     }
 
-    // Sorting linked list using merge sort
-    public static Node sorting(Node head) {
-        // Base case: if the list is empty or has one element, it's already sorted
-        if (head == null || head.next == null) {
-            return head;
-        }
+    // Merge two sorted lists
+    public static Node merge(Node left, Node right) {
+        Node dummy = new Node(0);
+        Node current = dummy;
 
-        // Find the middle of the linked list
-        Node middle = middle(head);
-        Node left = head;
-        Node right = middle.next;
-        middle.next = null; // Split the list into two halves
-
-        // Recursively sort both halves
-        left = sorting(left);
-        right = sorting(right);
-
-        // Merge the sorted halves
-        return merging(left, right);
-    }
-
-
-
-    // Merging two sorted linked lists
-    public static Node merging(Node left, Node right) {
-        Node dummy = new Node(0); // Dummy node to simplify merging
-        Node temp = dummy;
-
-        // Compare and merge nodes
         while (left != null && right != null) {
             if (left.val <= right.val) {
-                temp.next = left;    // Attach left node
-                left = left.next;    // Move left pointer
+                current.next = left;
+                left = left.next;
             } else {
-                temp.next = right;   // Attach right node
-                right = right.next;  // Move right pointer
+                current.next = right;
+                right = right.next;
             }
-            temp = temp.next;        // Move temp pointer to next node
+            current = current.next;
         }
 
-        // Attach remaining nodes if any
-        if (left == null) {
-            temp.next = right;
-        } else {
-            temp.next = left;
-        }
-
-        return dummy.next; // Return the sorted merged list
+        current.next = (left != null) ? left : right;
+        return dummy.next;
     }
 }
