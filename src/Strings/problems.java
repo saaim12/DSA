@@ -1,39 +1,43 @@
 package Strings;
 
-import java.util.ArrayList;
-
 public class problems {
     public static void main(String[] args) {
-        String s="abc";
-        System.out.println(substrings(s,0,0,new ArrayList<String>()));
+        String s = "abcdef";
+
+        // 1: First problem: skipping a specific character
+         System.out.println(skipCharacter(s));
+
+        // 2: Second problem: skip a substring
+        System.out.println(skipSubstring(s));
+
 
     }
 
     /**
-     * this problem is for finding substrings
-     * also used these method in neetcode problems to solve others
-     * should have it in mind while working with strings
-     * */
-    public static ArrayList<String> substrings(String str, int start, int end, ArrayList<String> subs){
-        if(start==str.length()){
-            return subs;
+     * Problem 1: Skip a specific character ('e') in the string.
+     */
+    public static String skipCharacter(String original) {
+        if (original.isEmpty()) {
+            return "";
         }
-        if(end <= str.length()){
-            if(start < end){
-                subs.add(str.substring(start,end));
-            }
-            substrings(str,start,end+1,subs);
-        }else{
-            substrings(str,start+1,start+1,subs);
+        if (original.charAt(0) == 'e') {
+            return skipCharacter(original.substring(1));
+        } else {
+            return original.charAt(0) + skipCharacter(original.substring(1));
         }
-        return subs;
     }
-//    public static ArrayList<String> substrings2(String str,char last,int start,ArrayList<String> subs){
-//        if(start == str.length()){
-//            return subs;
-//        }
-//        char to_be_added=str.charAt(start);
-//
-//
-//    }
+
+    /**
+     * Problem 2: Skip a specific substring ("ef") inside a string.
+     */
+    public static String skipSubstring(String original) {
+        if (original.isEmpty()) {
+            return "";
+        }
+        if (original.startsWith("ef")) {
+            return skipSubstring(original.substring(2));
+        } else {
+            return original.charAt(0) + skipSubstring(original.substring(1));
+        }
+    }
 }
