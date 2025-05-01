@@ -1,0 +1,59 @@
+In Java, wrapper classes are object versions of primitive data types.
+| Primitive | Wrapper Class |
+|-----------|----------------|
+| `int`     | `Integer`      |
+| `char`    | `Character`    |
+| `double`  | `Double`       |
+| `boolean` | `Boolean`      |
+| `float`   | `Float`        |
+| `long`    | `Long`         |
+| `byte`    | `Byte`         |
+| `short`   | `Short`        |
+
+Why Do We Need Wrapper Classes?
+Collections (like ArrayList) only work with objects, not primitives.
+
+Sometimes you need to convert between Strings and primitives.
+
+Wrapper classes provide useful utility methods (like parseInt, compare, etc.)
+
+
+🔄 Is Java Pass-by-Value or Pass-by-Reference?
+Java is always pass-by-value — but with objects, the value passed is the reference to the object.
+
+This leads to a common confusion:
+
+🔸 For primitives: the actual value is passed
+🔸 For objects: the reference (address) is passed by value
+
+🧪 Let's Demonstrate with Wrapper Classes
+java
+Copy
+Edit
+public class WrapperReferenceDemo {
+    public static void main(String[] args) {
+        Integer num = 10;
+        System.out.println("Before change: " + num);
+
+        changeValue(num);
+
+        System.out.println("After change: " + num); // Still 10
+    }
+
+    public static void changeValue(Integer n) {
+        n = 20;  // This reassigns 'n' to point to a new Integer object
+    }
+}
+🔍 Output:
+
+Before change: 10
+After change: 10
+
+❓ Why Didn't It Change?
+Because:
+
+The method changeValue(Integer n) received a copy of the reference to the Integer object.
+
+When you do n = 20, you're making n point to a new object (Integer.valueOf(20)), not changing the original object.
+
+So num in main() still points to the original 10.
