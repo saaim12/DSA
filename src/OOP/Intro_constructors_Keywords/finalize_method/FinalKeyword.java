@@ -1,4 +1,4 @@
-package OOP.Intro_constructors_Keywords.WrapperClasses_and_final_keyword;
+package OOP.finalize_method;
 
 // Final class: cannot be extended
 final class FinalKeyword {

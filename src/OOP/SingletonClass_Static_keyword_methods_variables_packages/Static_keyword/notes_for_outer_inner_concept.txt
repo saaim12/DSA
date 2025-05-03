@@ -1,0 +1,12 @@
+| Static Inner Class                                       | Non-Static Inner Class                            |
+| -------------------------------------------------------- | ------------------------------------------------- |
+| Can be instantiated **without** outer class object       | Needs outer class object                          |
+| Cannot access non-static members of outer class directly | Can access all members of outer class             |
+| Syntax: `Outer.Inner obj = new Outer.Inner();`           | Syntax: `Outer.Inner obj = outerObj.new Inner();` |
+
+
+| Feature                                             | Explanation                                                                                        |
+| --------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| 🔹 Does **not** need an instance of the outer class | So you can write `Outer.Inner obj = new Outer.Inner();` directly                                   |
+| 🔹 Useful for grouping helper classes               | Like `Map.Entry`, `Thread.State` — logically grouped, but don’t need full access to outer instance |
+| 🔹 Better memory management                         | Doesn’t hold a reference to the outer class, so helps avoid memory leaks                           |
