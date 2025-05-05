@@ -3,6 +3,13 @@ package Bitwise;
 public class advance_problems {
     public static void main(String[] args) {
         System.out.println(tows_complement_or_negative(5));
+        int num=10;
+        // it calculates the set bits
+        System.out.println(Integer.bitCount(10));
+        //padding
+        String s=Integer.toBinaryString(10);
+        String padded=String.format("%32s",s).replace(' ','0');
+        System.out.println(padded);
     }
 
 
@@ -21,4 +28,6 @@ public class advance_problems {
         inverted_num+=1;
         return inverted_num;
     }
+
+
 }
