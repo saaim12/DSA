@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Subsets_Subsequences_problems {
     public static void main(String[] args) {
-    String str="abc";
+    String str="lbee";
        System.out.println(subseq("",str,new ArrayList<String>()));
         //to print a ascii number of a char
         System.out.println('a'+0);
