@@ -1,4 +1,5 @@
 package Trees.AVL_trees;
+
 public class Main {
     public static void main(String[] args) {
         Tree avlTree = new Tree();
