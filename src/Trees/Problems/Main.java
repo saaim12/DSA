@@ -20,6 +20,8 @@ public class Main {
         System.out.println("\nHeight of tree: " + tree.root.height);
         System.out.println(bfs(tree.root));
         System.out.println(bfs_zig_zag(tree.root));
+        System.out.println(bfs_reversed(tree.root));
+        System.out.println(height_check(tree.root));
     }
     //simple bfs for level order traversal
     public static List<List<Integer>> bfs(Binary_tree.Node root) {
@@ -121,6 +123,48 @@ public class Main {
 
         return root;
     }
+    //level order traversal 2
+    public static List<List<Integer>> bfs_reversed(Binary_tree.Node root) {
+        List<List<Integer>> result = new ArrayList<>();
 
+        if (root == null) {
+            return result;
+        }
+
+        Queue<Binary_tree.Node> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> level = new ArrayList<>();
+
+            for (int i = 0; i < size; i++) {
+                Binary_tree.Node current = queue.poll();
+                level.add(current.val);
+
+                if (current.left != null) {
+                    queue.offer(current.left);
+                }
+                if (current.right != null) {
+                    queue.offer(current.right);
+                }
+            }
+
+            result.add(0,level);
+        }
+
+        return result;
+    }
+    public static int height_check(Binary_tree.Node root){
+        if(root==null) return 0;
+        int nodelefth=height(root.left);
+        int noderighth=height(root.right);
+        return Math.max(nodelefth,noderighth);
+
+    }
+    public static int height(Binary_tree.Node root){
+        if (root==null) return 1;
+        return 1 + Math.max(height(root.left),height(root.right));
+    }
 
 }
