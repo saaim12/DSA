@@ -10,13 +10,11 @@ public class Main {
 //        System.out.println("Enter value for root node:");
 //        int value = s.nextInt();
 //        tree.root = tree.new Node(value);
-//
 //        tree.insert(s, tree.root);
         Integer[] input = {1, 2, 3, null, 5, 6, 7}; // Example tree
         tree.root = buildTreeFromArray(input);
         System.out.println("In-order traversal:");
         tree.display(tree.root);
-
         System.out.println("\nHeight of tree: " + tree.root.height);
         System.out.println(bfs(tree.root));
         System.out.println(bfs_zig_zag(tree.root));
@@ -55,6 +53,8 @@ public class Main {
 
         return result;
     }
+    // is cousins or not
+
     //bfs for zig zag manner
     public static List<List<Integer>> bfs_zig_zag(Binary_tree.Node root) {
         List<List<Integer>> result = new ArrayList<>();
