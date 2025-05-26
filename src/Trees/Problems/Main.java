@@ -20,6 +20,7 @@ public class Main {
         System.out.println(bfs_zig_zag(tree.root));
         System.out.println(bfs_reversed(tree.root));
         System.out.println(height_check(tree.root));
+        System.out.println(diameter_of_binary_tree(tree.root));
     }
     //simple bfs for level order traversal
     public static List<List<Integer>> bfs(Binary_tree.Node root) {
@@ -163,8 +164,11 @@ public class Main {
 
     }
     public static int height(Binary_tree.Node root){
-        if (root==null) return 1;
+        if (root==null) return 0;
         return 1 + Math.max(height(root.left),height(root.right));
+    }
+    public static int diameter_of_binary_tree(Binary_tree.Node root){
+        return 1+ height(root.left) + height(root.right);
     }
 
 }
