@@ -21,6 +21,7 @@ public class Main {
         System.out.println(bfs_reversed(tree.root));
         System.out.println(height_check(tree.root));
         System.out.println(diameter_of_binary_tree(tree.root));
+        preorder(tree.root);
     }
     //simple bfs for level order traversal
     public static List<List<Integer>> bfs(Binary_tree.Node root) {
@@ -170,5 +171,13 @@ public class Main {
     public static int diameter_of_binary_tree(Binary_tree.Node root){
         return 1+ height(root.left) + height(root.right);
     }
-
+    public static void preorder(Binary_tree.Node root){
+        if (root == null) {
+            System.out.print(" NULL ");
+            return;
+        }
+        System.out.print(" "+root.val+" ");
+        preorder(root.left);
+        preorder(root.right);
+    }
 }

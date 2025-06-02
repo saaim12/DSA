@@ -12,6 +12,7 @@ public class Subsets_Subsequences_problems {
         //type casting it
         System.out.println((char) ('a'+2));
         System.out.println(subseq_iterative_method("123"));
+        System.out.println(permutation("","abc",new ArrayList<>()));
     }
     // First subsequences problem
     public static ArrayList<String> subseq(String processed, String unprocessed, ArrayList<String> list) {
@@ -51,4 +52,20 @@ public class Subsets_Subsequences_problems {
 
         return outer;
     }
+    // Second permutations problem
+    public static List<String> permutation(String processed , String unprocessed,List<String> ls){
+        if(unprocessed.length()==0){
+            ls.add(processed);
+            return ls;
+        }
+
+        for (int i = 0; i <unprocessed.length() ; i++) {
+            char curr_ch=unprocessed.charAt(i);
+            String new_processed=curr_ch+processed;
+            String new_unprocessed=unprocessed.substring(0,i)+unprocessed.substring(i+1);
+            permutation(new_processed,new_unprocessed,ls);
+        }
+        return ls;
+    }
+
 }
