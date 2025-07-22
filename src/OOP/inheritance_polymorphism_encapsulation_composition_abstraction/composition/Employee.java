@@ -1,4 +1,4 @@
-package OOP.inheritance_polymorphism_encapsulation_composition.composition;
+package OOP.inheritance_polymorphism_encapsulation_composition_abstraction.composition;
 
 public class Employee {
     private String name;

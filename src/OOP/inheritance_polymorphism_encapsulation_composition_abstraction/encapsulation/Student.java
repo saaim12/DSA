@@ -1,5 +1,5 @@
 // Package declaration - defines the folder structure of your project
-package OOP.inheritance_polymorphism_encapsulation_composition.encapsulation;
+package OOP.inheritance_polymorphism_encapsulation_composition_abstraction.encapsulation;
 
 /**
  * This class demonstrates the concept of Encapsulation in Java.

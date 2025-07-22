@@ -1,4 +1,4 @@
-package OOP.inheritance_polymorphism_encapsulation_composition.inheritance;
+package OOP.inheritance_polymorphism_encapsulation_composition_abstraction.inheritance;
 
 public class Student extends Person {
     private int rollNo;

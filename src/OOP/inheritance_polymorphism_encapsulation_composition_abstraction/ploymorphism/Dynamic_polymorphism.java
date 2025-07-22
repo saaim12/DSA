@@ -1,4 +1,4 @@
-package OOP.inheritance_polymorphism_encapsulation_composition.polymorphism;
+package OOP.inheritance_polymorphism_encapsulation_composition_abstraction.polymorphism;
 
 // Base class
 class Animal {

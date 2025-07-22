@@ -1,4 +1,4 @@
-package OOP.inheritance_polymorphism_encapsulation_composition.ploymorphism;
+package OOP.inheritance_polymorphism_encapsulation_composition_abstraction.ploymorphism;
 
 class Calculator {
     // this class is for the explanation of static polymorphism

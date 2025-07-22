@@ -1,4 +1,4 @@
-package OOP.inheritance_polymorphism_encapsulation_composition.encapsulation;
+package OOP.inheritance_polymorphism_encapsulation_composition_abstraction.encapsulation;
 
 public class Main {
     public static void main(String[] args) {
