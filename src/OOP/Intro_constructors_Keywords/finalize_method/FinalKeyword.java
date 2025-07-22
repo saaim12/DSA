@@ -46,5 +46,5 @@ final class FinalKeyword {
 //  2:Final Instance Variables with Reference Types:
 //
 //When a final instance variable is a reference (like an array or an object), the reference cannot be changed, but the object's content (if mutable) can be modified.
-//
+//Also final class cannot be inherited
 //However, if the final reference is a primitive, the value cannot be changed once initialized.

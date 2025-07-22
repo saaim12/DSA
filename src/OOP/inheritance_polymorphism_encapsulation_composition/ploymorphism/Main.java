@@ -1,4 +1,4 @@
-package OOP.inheritance_polymorphism_encapsulation.ploymorphism;
+package OOP.inheritance_polymorphism_encapsulation_composition.ploymorphism;
 
 public class Main {
     public static void main(String[] args) {

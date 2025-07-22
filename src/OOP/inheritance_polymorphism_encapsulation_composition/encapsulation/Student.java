@@ -1,5 +1,5 @@
 // Package declaration - defines the folder structure of your project
-package OOP.inheritance_polymorphism_encapsulation.encapsulation;
+package OOP.inheritance_polymorphism_encapsulation_composition.encapsulation;
 
 /**
  * This class demonstrates the concept of Encapsulation in Java.
@@ -11,7 +11,7 @@ public class Student {
     private String name;
     private int age;
     private int roll_no;
-
+    static int id;
     /**
      * Constructor to initialize the Student object with name, age, and roll number.
      * It uses setter methods for initialization which is a good practice for encapsulation.
@@ -20,6 +20,7 @@ public class Student {
         this.setName(name);
         this.setAge(age);
         this.setRoll_no(roll_no);
+        id=id+1;
     }
 
     // Getter for name - provides read access to the private variable 'name'
@@ -57,6 +58,7 @@ public class Student {
                 "Name='" + name + '\'' +
                 ", Age=" + age +
                 ", Roll No=" + roll_no +
+                ", Id "+id+
                 '}';
     }
 }

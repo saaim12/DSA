@@ -1,9 +1,9 @@
-package OOP.inheritance_polymorphism_encapsulation.inheritance;
+package OOP.inheritance_polymorphism_encapsulation_composition.inheritance;
 
 
 public class Person {
     private String name;
-    private int age;
+     int age;
 
     public Person(String name, int age) {
         this.name = name;
