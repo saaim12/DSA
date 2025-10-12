@@ -7,6 +7,6 @@ public class Main {
             s1=new Student("Random",11,"Random");
         }
         //the main idea behind this is that we cannot tell java when to collect garbage but we can do one thing and that is we
-        //we can tell the gc to do something before doing it
+        // can tell the gc to do something before doing it
     }
 }

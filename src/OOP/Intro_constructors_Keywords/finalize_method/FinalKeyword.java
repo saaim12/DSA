@@ -1,4 +1,4 @@
-package OOP.finalize_method;
+package OOP.Intro_constructors_Keywords.finalize_method;
 
 // Final class: cannot be extended
 final class FinalKeyword {
@@ -17,7 +17,7 @@ final class FinalKeyword {
     // Method demonstrating final local variable
     public void demonstrateFinalVariable() {
         final int localVar = 50;
-        // localVar = 60; // ❌ Not allowed: cannot reassign a final variable
+         //localVar = 60; // ❌ Not allowed: cannot reassign a final variable
         System.out.println("Final local variable: " + localVar);
     }
 

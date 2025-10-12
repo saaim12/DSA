@@ -38,6 +38,25 @@ class Student {
         System.out.println("-------------------------");
     }
 }
+abstract class Shape {
+    private final String name;
+    Shape(String name){ this.name = name; }      // constructors are allowed
+    public String name(){ return name; }         // concrete method
+
+    public abstract double area();               // must be implemented
+}
+class Circle extends Shape {
+    static final double r;
+    static {
+        r=2;
+    }
+    public  void print(){
+        System.out.println(this.r);
+    }
+    Circle(double r){ super("circle"); //this.r = r;
+         }
+    @Override public double area(){ return Math.PI * r * r; }
+}
 
 public class Main {
     public static void main(String[] args) {
@@ -51,5 +70,9 @@ public class Main {
         student1.displayInfo();
         student2.displayInfo();
         student3.displayInfo();
+
+        // abstract
+        System.out.println(Circle.r);
     }
+
 }
